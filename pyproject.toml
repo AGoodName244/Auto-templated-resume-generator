@@ -17,3 +17,6 @@ dependencies = [
     "pytest-mock",
 ]
 requires-python = ">=3.8"
+
+[tool.setuptools]
+packages = ["auto_generator"]

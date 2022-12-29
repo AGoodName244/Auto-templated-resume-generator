@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- All of the meta data for the page belongs in the header tag -->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="/static/images/favicon.png">
+	<link rel="stylesheet" href="/static/css/html5reset.css">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<title>Auto Resume Generator</title>
+</head>
+
+<body>
+	<header class="header">
+		<img src="/static/images/logo.png" alt="logo" class="logo">
+		<ul class="nav">
+			<li><a href="/">Home</a></li>
+			<li><a href="resume.html">Resume</a></li>
+			<li><a href="faq.html">FAQ</a></li>
+			{% if logname is none %}
+				<li><a href="/accounts/login/" id="login">LogIn</a></li>
+				<li><a href="/accounts/signup/" id="signup">SignUp</a></li>
+			{% else %}
+				<li><a href="/accounts/{{logname}}/" id="logname">{{logname}}</a></li>
+			{% endif %}
+		</ul>
+	</header>
+	<div class="index-div1">
+		<h1 class="index-h1">Auto Resume Generator</h1>
+		<p class="index-p1">A Fast and Efficient Choice</p>
+		<p class="index-p2">Auto Resume Generator offers accurate, efficient and automatic resume creating process. The diverse templates allows you 
+			choose your favorite style for your resume. By simply typing the information you want to contain in your resume, you can get an excellent 
+			resume within a second!
+		</p>
+		<img src="/static/images/img1.jpg" alt="img1" class="img1">
+	</div>
+	<div>
+		<h1>Why Auto Resume Generator?</h1>
+		<p class="index-p3"></p>
+		<p class="index-p4"></p>
+		<p class="index-p5"></p>
+		<img src="/static/images/img2.jpg" alt="img2" class="img2">
+		<img src="/static/images/img3.jpg" alt="img3" class="img3">
+		<img src="/static/images/img4.jpg" alt="img4" class="img4">
+	</div>
+</body>

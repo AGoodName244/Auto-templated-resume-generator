@@ -1,0 +1,16 @@
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE USERS(
+    username VARCHAR(20) NOT NULL,
+    password VARCHAR(20) NOT NULL,
+    email VARCHAR(40) NOT NULL,
+    PRIMARY KEY(username)
+);
+
+CREATE TABLE IMAGE(
+    owner VARCHAR(20) NOT NULL,
+    filename VARCHAR(100) NOT NULL,
+    imgid INTEGER PRIMARY KEY AUTOINCREMENT,
+    FOREIGN KEY (owner) REFERENCES users
+    ON DELETE CASCADE
+);
