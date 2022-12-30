@@ -15,6 +15,7 @@ dependencies = [
     "pytest",
     "requests",
     "pytest-mock",
+    "fpdf2",
 ]
 requires-python = ">=3.8"
 

@@ -29,7 +29,7 @@ def show_login():
         )
         valid_account = cur.fetchone()
         if valid_account is None:
-            return flask.abort(403) # can be other html error page
+            return flask.redirect(flask.url_for('show_login'))
 
         if (valid_account["password"] == password or
                 auto_generator.model.Valid_Password(valid_account["password"], password)):
@@ -48,7 +48,6 @@ def show_signup():
     else:
         username = str(flask.request.form.get("username"))
         password = str(flask.request.form.get("password"))
-        email = str(flask.request.form.get("email"))
         
         if username is None or password is None:
             return flask.abort(400)
@@ -64,21 +63,21 @@ def show_signup():
             return flask.abort(403)
         encrypt_pass = auto_generator.model.Encrypt_Password(password)
         connection.execute(
-            "INSERT INTO users(username, password, email) "
-            "VALUES (?, ?, ?) ",
-            (username, encrypt_pass, email)
+            "INSERT INTO users(username, password) "
+            "VALUES (?, ?) ",
+            (username, encrypt_pass)
         )
         flask.session["logname"] = username
         return flask.redirect(flask.url_for("show_index"))
     
-@auto_generator.app.route('/accounts/<username>/', methods=['POST', 'GET'])
-def show_users():
+@auto_generator.app.route('/accounts/users/<username>/', methods=['POST', 'GET'])
+def show_users(username):
     """Show users account page."""
     if "logname" not in flask.session:
         return flask.redirect(flask.url_for('/accounts/login/'))
     pass #FIXME: Writing logic for user account page
     
-@auto_generator.app.route('/accounts/logout/', methods=['POST'])
+@auto_generator.app.route('/accounts/logout/', methods=['GET', 'POST'])
 def show_logout():
     """Show logout page."""
     flask.session.clear()

@@ -21,7 +21,8 @@
 				<li><a href="/accounts/login/" id="login">LogIn</a></li>
 				<li><a href="/accounts/signup/" id="signup">SignUp</a></li>
 			{% else %}
-				<li><a href="/accounts/{{logname}}/" id="logname">{{logname}}</a></li>
+				<li><a href="/accounts/users/{{logname}}/" id="logname">{{logname}}</a></li>
+				<li><a href="/accounts/logout/" id="logout">LogOut</a></li>
 			{% endif %}
 		</ul>
 	</header>
@@ -34,13 +35,28 @@
 		</p>
 		<img src="/static/images/img1.jpg" alt="img1" class="img1">
 	</div>
-	<div>
-		<h1>Why Auto Resume Generator?</h1>
-		<p class="index-p3"></p>
-		<p class="index-p4"></p>
-		<p class="index-p5"></p>
+	<div class="index-div2">
+		<h1 class="index-h2">Why Auto Resume Generator?</h1>
 		<img src="/static/images/img2.jpg" alt="img2" class="img2">
 		<img src="/static/images/img3.jpg" alt="img3" class="img3">
 		<img src="/static/images/img4.jpg" alt="img4" class="img4">
+		<h2 class="index-h3">Automatic</h2>
+		<h2 class="index-h4">Accurate</h2>
+		<h2 class="index-h5">Immediate</h2>
+		<p class="index-p3">Choose your favorite template and input your information then get the resume without further actions</p>
+		<p class="index-p4">Gather information and transform it to well designed layout without missing any information</p>
+		<p class="index-p5">View real-time output, and download needed versions without any waiting time</p>
 	</div>
+	<div class="index-div3">
+		<h1 class="index-h6">Try Our Automatic Resume Generator Now!</h1>
+		<p class="index-p6">Save time by several steps. No more obstacle thinking about the layout. Rapidly build a perfect resume for your application!</p>
+		<ul>
+			<li><a href="resume.html" id="resume">CreateMyResume</a></li>
+		</ul>
+		<img src="/static/images/img5.jpg" alt="img5" class="img5">
+	</div>
+
+	<footer class="footer">
+		&copy; 2022 AUTO RESUME GENERATOR
+   </footer>
 </body>

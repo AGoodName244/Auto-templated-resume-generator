@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- All of the meta data for the page belongs in the header tag -->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="/static/images/favicon.png">
+	<link rel="stylesheet" href="/static/css/html5reset.css">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<title>Auto Resume Generator</title>
+</head>
+
+<body>
+	<header class="header1">
+		<img src="/static/images/logo.png" alt="logo" class="logo">
+		<a href="/" class="close"><img src="/static/images/img6.png" alt="close" class="close"></a>
+    </header>
+    <main class="login-main">
+        <h1 class="login-h1">Log In</h1>
+        <p1 class="login-p1">Welcome Back!</p1>
+        <form action="/accounts/login/" id="loginform" method="POST" class="login-form" style="width: 300px;" oninput="form_input_func()" onsubmit="form_submit_func(event)">
+            <input type="text" id="username" name="username" placeholder="username"><br>
+            <input type="text" id="password" name="password" placeholder="password"><br>
+            <input type="submit" value="Log in" id="form-button">
+        </form>
+        <div id = "errorMessage"></div>
+        <p2 class="login-p2">Don't have an account yet?</p2>
+        <a href="/accounts/signup/" class="login-p3"><p3>Sign Up</p3></a>
+    </main>
+
+    <footer class="footer">
+		&copy; 2022 AUTO RESUME GENERATOR
+   </footer>
+</body>
+
+<script src="/static/entry.js/"></script>
