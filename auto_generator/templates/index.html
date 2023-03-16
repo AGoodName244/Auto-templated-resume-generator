@@ -15,7 +15,7 @@
 		<img src="/static/images/logo.png" alt="logo" class="logo">
 		<ul class="nav">
 			<li><a href="/">Home</a></li>
-			<li><a href="resume.html">Resume</a></li>
+			<li><a href="/accounts/users/{{logname}}">Resume</a></li>
 			<li><a href="faq.html">FAQ</a></li>
 			{% if logname is none %}
 				<li><a href="/accounts/login/" id="login">LogIn</a></li>
@@ -58,5 +58,5 @@
 
 	<footer class="footer">
 		&copy; 2022 AUTO RESUME GENERATOR
-   </footer>
+    </footer>
 </body>

@@ -17,15 +17,15 @@
     </header>
     <main class="login-main">
         <h1 class="login-h1">Log In</h1>
-        <p1 class="login-p1">Welcome Back!</p1>
+        <p class="login-p1">Welcome Back!</p>
         <form action="/accounts/login/" id="loginform" method="POST" class="login-form" style="width: 300px;" oninput="form_input_func()" onsubmit="form_submit_func(event)">
             <input type="text" id="username" name="username" placeholder="username"><br>
             <input type="text" id="password" name="password" placeholder="password"><br>
             <input type="submit" value="Log in" id="form-button">
         </form>
-        <div id = "errorMessage"></div>
-        <p2 class="login-p2">Don't have an account yet?</p2>
-        <a href="/accounts/signup/" class="login-p3"><p3>Sign Up</p3></a>
+        <div id = "errmsg">{{ errorMessage }}</div>
+        <p class="login-p2">Don't have an account yet?</p>
+        <a href="/accounts/signup/" class="login-p3"><p>Sign Up</p></a>
     </main>
 
     <footer class="footer">

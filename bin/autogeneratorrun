@@ -6,11 +6,11 @@
 set -Eeuo pipefail
 set -x
 
-# Call insta485 destroy
-./bin/generator_db destroy
-
 # Call insta485 create
-./bin/generator_db create
+DB_FILE=./var/auto_generator.sqlite3
+if [ ! -f "$DB_FILE" ]; then
+    ./bin/generator_db create
+fi
 
 # Build
 FLASK_ENV=development FLASK_APP=auto_generator flask run --host 0.0.0.0 --port 8000

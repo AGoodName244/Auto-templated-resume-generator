@@ -8,3 +8,4 @@ from auto_generator.views.index import show_index
 from auto_generator.views.accounts import show_login
 from auto_generator.views.accounts import show_logout
 from auto_generator.views.accounts import show_signup
+from auto_generator.views.resumes import show_generaotr

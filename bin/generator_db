@@ -20,6 +20,7 @@ case $1 in
 	"create")
 		mkdir -p var/uploads
 		sqlite3 var/auto_generator.sqlite3 < sql/schema.sql
+		sqlite3 var/auto_generator.sqlite3 < sql/data.sql
 		;;
 	
 	"destroy")
@@ -30,6 +31,7 @@ case $1 in
 		rm -rf var/auto_generator.sqlite3 var/uploads
 		mkdir -p var/uploads
 		sqlite3 var/auto_generator.sqlite3 < sql/schema.sql
+		sqlite3 var/auto_generator.sqlite3 < sql/data.sql
 		;;
 
 	"dump")

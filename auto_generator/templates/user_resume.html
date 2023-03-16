@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- All of the meta data for the page belongs in the header tag -->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="/static/images/favicon.png">
+	<link rel="stylesheet" href="/static/css/html5reset.css">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<title>Auto Resume Generator</title>
+</head>
+
+<body>
+	<header class="header">
+		<img src="/static/images/logo.png" alt="logo" class="logo">
+		<ul class="nav">
+			<li><a href="/">Home</a></li>
+			<li><a href="/accounts/users/{{logname}}">Resume</a></li>
+			<li><a href="faq.html">FAQ</a></li>
+            {% if logname is none %}
+                <li><a href="/accounts/login/" id="login">LogIn</a></li>
+				<li><a href="/accounts/signup/" id="signup">SignUp</a></li>
+			{% else %}
+				<li><a href="/accounts/users/{{logname}}/" id="logname">{{logname}}</a></li>
+				<li><a href="/accounts/logout/" id="logout">LogOut</a></li>
+			{% endif %}
+		</ul>
+	</header>
+    <div class="resume-div1">
+		<img src="{{user_profile}}" class="profile-img">
+		<div id="profileform"></div>
+		<h1 class="resume-h1">Previous Resume</h1>
+		<div class="resumebar-container">
+			<!--Code below should be replaced by loop-->
+			{% for resume in resume_list %}
+				<a href="#"><img src="/uploads/{{resume}}" class="resume-img"></a> 
+			{% endfor %}
+		</div>
+    </div>
+	<footer class="footer">
+		&copy; 2022 AUTO RESUME GENERATOR
+    </footer>
+
+</body>

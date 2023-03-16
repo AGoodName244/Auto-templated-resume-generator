@@ -29,6 +29,8 @@ def show_login():
         )
         valid_account = cur.fetchone()
         if valid_account is None:
+            context = {"errorMessage": "Username does not exists, please try again!"}
+            return flask.render_template("login.html", **context)
             return flask.redirect(flask.url_for('show_login'))
 
         if (valid_account["password"] == password or
@@ -36,6 +38,8 @@ def show_login():
             flask.session["logname"] = username
             return flask.redirect(flask.url_for('show_index')) # can be redirected to user page
         else:
+            context = {"errorMessage": "Password not correct, please try again!"}
+            return flask.render_template("login.html", **context)
             return flask.abort(403) # can be other html error page
         
 @auto_generator.app.route('/accounts/signup/', methods=['POST', 'GET'])
@@ -60,6 +64,8 @@ def show_signup():
         )
         valid_account = cur.fetchone()
         if valid_account is not None:
+            context = {"errorMessage": "Username already exists, please use another one"}
+            return flask.render_template("signup.html", **context)
             return flask.abort(403)
         encrypt_pass = auto_generator.model.Encrypt_Password(password)
         connection.execute(
@@ -73,8 +79,30 @@ def show_signup():
 @auto_generator.app.route('/accounts/users/<username>/', methods=['POST', 'GET'])
 def show_users(username):
     """Show users account page."""
-    if "logname" not in flask.session:
-        return flask.redirect(flask.url_for('/accounts/login/'))
+    if "logname" not in flask.session or username is None:
+        return flask.redirect(flask.url_for('show_login'))
+    logname = flask.session['logname']
+    connection = auto_generator.model.get_db()
+    cur = connection.execute(
+        "SELECT profilepath "
+        "FROM USERS "
+        "WHERE username = ? ",
+        (logname, )
+    )
+    user_profile = cur.fetchone()["profilepath"]
+    
+    cur = connection.execute(
+        "SELECT filename FROM RESUME "
+        "WHERE owner = ? "
+        "ORDER BY created ",
+        (logname, )
+    )
+    cur_list = cur.fetchall()
+    resume_list = []
+    for resume in cur_list:
+        resume_list.append(resume["filename"])
+    context = {"logname": logname, "user_profile": user_profile, "resume_list": resume_list}
+    return flask.render_template("user_resume.html", **context)
     pass #FIXME: Writing logic for user account page
     
 @auto_generator.app.route('/accounts/logout/', methods=['GET', 'POST'])
